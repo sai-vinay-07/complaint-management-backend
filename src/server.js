@@ -13,9 +13,7 @@ const path = require('path');
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({
-    origin: ["http://localhost:5173"],
-    credentials: true
+app.use(cors({origin:'*'
 }));
 
 
@@ -27,7 +25,7 @@ app.use('/api/evidence', evidenceRouter)
 app.use("/uploads", express.static("uploads"));
 
 
-// Global Error Handler
+
 app.use((err, req, res, next) => {
     if (err.name === 'MulterError') {
         return res.status(400).json({ message: err.message, field: err.field });
