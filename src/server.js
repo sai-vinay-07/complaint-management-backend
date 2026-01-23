@@ -36,6 +36,10 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Internal Server Error' });
 });
 
+app.get('/',()=>{
+    res.send('It works in browser.')
+})
+
 const port = process.env.PORT || process.env.port || 8082;
 
 const startServer = async () => {
