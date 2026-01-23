@@ -37,8 +37,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/',(req,res)=>{
-    res.send('It works in browser.')
-})
+    res.send('SecureCase Backend is running 🚀')})
 
 const port = process.env.PORT || process.env.port || 8082;
 
