@@ -67,7 +67,7 @@ The authentication and registration process follows a secure, multi-step flow to
 
 The project follows a Model-View-Controller (MVC) architectural pattern to promote separation of concerns and maintainability.
 
-
+```
 /
 ├── config/         # Environment variables and database configuration
 ├── controllers/    # Contains the business logic for request handling
@@ -77,7 +77,7 @@ The project follows a Model-View-Controller (MVC) architectural pattern to promo
 ├── services/       # External service integrations (e.g., Nodemailer)
 ├── utils/          # Utility functions and helper classes
 └── server.js       # The main application entry point
-
+```
 
 ## Environment Variables
 
