@@ -54,6 +54,7 @@ const login = async (req,res)=>{
 
     const user = await User.findOne({email})
 
+
     if(!user){
       return res.status(400).send('User Not Found, Plz Register')
     }

@@ -29,6 +29,46 @@ const createComplaint = async (req, res) => {
   }
 };
 
+const updateComplaintStatus = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { status } = req.body
+
+    const complaint = await Complaint.findById(id)
+    if (!complaint) {
+      return res.status(404).json({
+        message: "Complaint Not Found"
+      })
+    }
+
+    const allowedStatus = ["SUBMITTED", "UNDER_REVIEW", "CLOSED"]
+
+    if (!allowedStatus.includes(status)) {
+      return res.status(400).json({
+        message: "Invalid Status"
+      })
+    }
+
+    if (complaint.status === 'CLOSED') {
+      return res.status(400).json({
+        message: "Complaint Already Closed"
+      })
+    }
+
+    complaint.status = status;
+    await complaint.save()
+    return res.status(200).json({
+      message: "Status Updated Successfully"
+    })
+
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({
+      message: "Internal Server Error"
+    })
+  }
+}
+
 const getMyComplaints = async (req, res) => {
   try {
     const complaints = await Complaint.find({
@@ -80,25 +120,28 @@ const getUserComplaints = async (req, res) => {
 };
 
 
-const getAllComplaints = async (req,res)=>{
-    try {
+const getAllComplaints = async (req, res) => {
+  try {
 
-        const allComplaints = await Complaint.find({ })
-        
-        if (allComplaints.length === 0) {
-             return res.status(404).json({ message: "No complaints found" })
-            }
-        
-        return res.status(200).json({
-            count: allComplaints.length,
-            allComplaints
-        })
-    } 
-     catch (error) {
-         console.error(error);
-         return res.status(500).json({
-               message: "Internal server error"
-            });
+    const allComplaints = await Complaint.find()
+      .select("-__v")
+      .populate("userId", "email username")
+      .sort({ createdAt: -1 });
+
+    if (allComplaints.length === 0) {
+      return res.status(404).json({ message: "No complaints found" })
     }
+
+    return res.status(200).json({
+      count: allComplaints.length,
+      allComplaints
+    })
+  }
+  catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: "Internal server error"
+    });
+  }
 }
-module.exports = { createComplaint,getMyComplaints,getUserComplaints,getAllComplaints };
+module.exports = { updateComplaintStatus, createComplaint, getMyComplaints, getUserComplaints, getAllComplaints };

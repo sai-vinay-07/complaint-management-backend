@@ -5,6 +5,7 @@ dotenv.config();
 
 const authMiddleware = (req, res, next) => {
     try {
+        
         const token =
             req.cookies?.token ||
             req.headers.authorization?.split(" ")[1];
@@ -17,9 +18,13 @@ const authMiddleware = (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_TOKEN);
 
-        req.user = decoded;
+        req.user = {
+            id: decoded.id,
+            role: decoded.role
+        };
 
         next();
+
     } catch (error) {
         console.error("JWT ERROR:", error.message);
         return res.status(401).json({
