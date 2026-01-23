@@ -36,8 +36,20 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Internal Server Error' });
 });
 
-app.get('/',(req,res)=>{
-    res.send('SecureCase Backend is running 🚀')})
+app.get("/", (req, res) => {
+    res.send(`
+        <html>
+          <head>
+            <title>SecureCase Backend</title>
+          </head>
+          <body style="font-family:Arial;text-align:center;margin-top:50px;">
+            <h1>🚀 SecureCase Backend is Live</h1>
+            <p>API server is running successfully.</p>
+          </body>
+        </html>
+    `);
+});
+
 
 const port = process.env.PORT || process.env.port || 8082;
 
