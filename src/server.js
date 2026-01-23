@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Internal Server Error' });
 });
 
-app.get('/',()=>{
+app.get('/',(req,res)=>{
     res.send('It works in browser.')
 })
 
