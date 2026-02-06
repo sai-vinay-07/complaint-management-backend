@@ -1,6 +1,6 @@
-# SecureCase – Incident Reporting & Evidence Management Platform
+# Complaint – Incident Reporting & Evidence Management Platform
 
-SecureCase is a robust and secure backend system designed for an incident reporting and evidence management platform. It provides a reliable foundation for users to report incidents, manage their cases, and upload evidence files securely. The system is built with a focus on security, scalability, and maintainability, featuring JWT-based authentication, role-based access control, and a clean MVC architecture.
+Complaint Management System is a robust and secure backend system designed for an incident reporting and evidence management platform. It provides a reliable foundation for users to report incidents, manage their cases, and upload evidence files securely. The system is built with a focus on security, scalability, and maintainability, featuring JWT-based authentication, role-based access control, and a clean MVC architecture.
 
 
 ## Table of Contents
@@ -42,7 +42,7 @@ SecureCase is a robust and secure backend system designed for an incident report
 
 ## Security Features
 
-Security is a primary design consideration for SecureCase.
+Security is a primary design consideration for the Complaint Management System.
 
 - **JWT Authentication:** The system uses JSON Web Tokens for stateless, secure authentication. Tokens are signed with a secret key to prevent tampering.
 - **HTTP-Only Cookies:** JWTs are stored in `HttpOnly` cookies, which are not accessible via client-side JavaScript. This is a critical defense against Cross-Site Scripting (XSS) attacks.
@@ -100,7 +100,7 @@ EMAIL_HOST=smtp.example.com
 EMAIL_PORT=587
 EMAIL_USER=your_email_username
 EMAIL_PASS=your_email_password
-EMAIL_FROM="SecureCase Support <support@example.com>"
+EMAIL_FROM="Complaint Management System Support <support@example.com>"
 ```
 
 ## Installation and Setup
@@ -109,8 +109,8 @@ Follow these steps to get the development environment running.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/SecureCase_Backend.git
-    cd SecureCase_Backend
+    git clone https://github.com/your-username/complaint-management-system-backend.git
+    cd complaint-management-system-backend
     ```
 
 2.  **Install dependencies:**

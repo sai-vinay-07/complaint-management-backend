@@ -15,7 +15,8 @@ const path = require('path');
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({origin:'*'
+app.use(cors({
+    origin: '*'
 }));
 
 
@@ -40,10 +41,10 @@ app.get("/", (req, res) => {
     res.send(`
         <html>
           <head>
-            <title>SecureCase Backend</title>
+            <title>Complaint Management System Backend</title>
           </head>
           <body style="font-family:Arial;text-align:center;margin-top:50px;">
-            <h1>🚀 SecureCase Backend is Live</h1>
+            <h1>🚀 Complaint Management System Backend is Live</h1>
             <p>API server is running successfully.</p>
           </body>
         </html>
